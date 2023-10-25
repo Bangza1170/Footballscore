@@ -19,6 +19,13 @@ export const getScore = async (req: Request, res: Response) => {
         (element) => element?.textContent,
         team
       );
+      var iconteam = await page.waitForSelector(
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-5.team-name.col-team-name > div > div.team-logo`
+      );
+      var icontype = await page.evaluate(
+        (element) => element?.textContent,
+        iconteam
+      );
       var pi = await page.waitForSelector(
         `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(5)`
       );
