@@ -70,6 +70,7 @@ export const getScore = async (req: Request, res: Response) => {
 
       response.push({
         team: teamName,
+        type: icontype,
         pi: scorePI,
         w: scoreWin,
         d: scoreDraw,
