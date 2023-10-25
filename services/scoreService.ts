@@ -20,7 +20,7 @@ export const getScore = async (req: Request, res: Response) => {
         team
       );
       var iconteam = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-5.team-name.col-team-name > div > div.team-logo`
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-5.team-name.col-team-name > div > div.team-logo > img)`
       );
       var icontype = await page.evaluate(
         (element) => element?.textContent,
