@@ -19,13 +19,13 @@ export const getScore = async (req: Request, res: Response) => {
         (element) => element?.textContent,
         team
       );
-      var iconteam = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-5.team-name.col-team-name > div > div.team-logo > img)`
-      );
-      var icontype = await page.evaluate(
-        (element) => element?.textContent,
-        iconteam
-      );
+      // var iconteam = await page.waitForSelector(
+      //   `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-5.team-name.col-team-name > div > div.team-logo > img)`
+      // );
+      // var icontype = await page.evaluate(
+      //   (element) => element?.textContent,
+      //   iconteam
+      // );
       var pi = await page.waitForSelector(
         `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(5)`
       );
@@ -70,7 +70,7 @@ export const getScore = async (req: Request, res: Response) => {
 
       response.push({
         team: teamName,
-        type: icontype,
+        // type: icontype,
         pi: scorePI,
         w: scoreWin,
         d: scoreDraw,
