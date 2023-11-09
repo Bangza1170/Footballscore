@@ -26,13 +26,18 @@ export const getScore = async (req: Request, res: Response) => {
       //   (element) => element?.textContent,
       //   iconteam
       // );
+      var iconteam = await page.waitForSelector(
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-5.team-name.col-team-name > div > div.team-logo > img`
+        // `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(4)`
+      );
+      var iconteamlogo = await page.evaluate((element) => element?.src, iconteam);
       var pi = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(5)`
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(4)`
       );
       var scorePI = await page.evaluate((element) => element?.textContent, pi);
 
       var Win = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(6)`
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(5)`
       );
       var scoreWin = await page.evaluate(
         (element) => element?.textContent,
@@ -40,7 +45,7 @@ export const getScore = async (req: Request, res: Response) => {
       );
 
       var Draw = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(7)`
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(6)`
       );
       var scoreDraw = await page.evaluate(
         (element) => element?.textContent,
@@ -48,7 +53,7 @@ export const getScore = async (req: Request, res: Response) => {
       );
 
       var Lose = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(8)`
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(7)`
       );
       var scoreLose = await page.evaluate(
         (element) => element?.textContent,
@@ -56,7 +61,7 @@ export const getScore = async (req: Request, res: Response) => {
       );
 
       var Gd = await page.waitForSelector(
-        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div.col-1.fixed-margin.text-point`
+        `#__next > main > div.sc-aXZVg.fyChqS.tablescoresMobile > div > ul > div:nth-child(${i}) > div > div:nth-child(8)`
       );
       var scoreGd = await page.evaluate((element) => element?.textContent, Gd);
 
@@ -69,6 +74,7 @@ export const getScore = async (req: Request, res: Response) => {
       );
 
       response.push({
+        icon: iconteamlogo,
         team: teamName,
         // type: icontype,
         pi: scorePI,
