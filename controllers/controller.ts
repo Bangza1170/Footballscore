@@ -3,6 +3,6 @@ import { getScore } from "../services/scoreService";
 
 const Controller = exports.Router();
 
-Controller.get("", getScore);
+Controller.get("/getscore", getScore);
 
 export default Controller;
