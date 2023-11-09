@@ -22,6 +22,6 @@
     "puppeteer": "^20.8.2"
   },
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "node index.ts"
   }
 }
